@@ -1,8 +1,10 @@
 # Runtime Asset Database for Unity
 
 The **Runtime Asset Database** is a library designed to simplify the implementation of a runtime save and load subsystem in your Unity application. This library replicates and extends the familiar concepts of prefabs, prefab variants, and assets found within the Unity Editor, making it easier than ever to manage and manipulate game assets at runtime and implement workflows similar to those of the Unity Editor dynamically during runtime.
-![Project Browser Promo Video](https://www.youtube.com/watch?v=DXWriLgrWdE)
-![Project Browser Sample][runtime_asset_database]
+
+[![Promo Video][youtube_icon]](https://www.youtube.com/watch?v=DXWriLgrWdE)
+
+
 ## Introduction
 
 Unity developers often rely on the convenience and flexibility of the Editor's asset management system when designing their games. However, when it comes to implementing a save and load system at runtime, this process can become more complex. The Runtime Asset Database bridges this gap by bringing the essential asset management functionalities you're accustomed to into the runtime environment.
@@ -1024,6 +1026,7 @@ After finishing creating or updating surrogates, make sure to click **"Tools" > 
 
 If you cannot find something in the documentation or have any questions, please feel free to send an email to [Battlehub@outlook.com](mailto:Battlehub@outlook.com) or ask directly in [this](https://t.me/battlehub) support group. Keep up the great work in your development journey! 😊
 
+[youtube_icon]: Docs/Images/Youtube.png
 [runtime_asset_database]:  Docs/Images/runtme_asset_database.png
 [getting_started_result]: Docs/Images/getting_started.png
 [import_external_asset]: Docs/Images/import_external_asset.png
