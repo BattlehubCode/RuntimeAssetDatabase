@@ -4,6 +4,8 @@ The **Runtime Asset Database** is a library designed to simplify the implementat
 
 [![Promo Video][youtube_icon]](https://www.youtube.com/watch?v=DXWriLgrWdE)
 
+> **Note**  
+You can find the online version of this document [here](https://github.com/Battlehub0x/RuntimeAssetDatabase)
 
 ## Introduction
 
@@ -16,6 +18,7 @@ Unity developers often rely on the convenience and flexibility of the Editor's a
 - **Extensibility with new types and components:** Allows for the extension with new serializable types.
 - **Pluggable External Asset Importers:** Offers the ability to integrate external asset importers seamlessly.
 
+<div style="page-break-after: always;"></div>
 
 ## Getting Started
 1. Unpack **StarterKit** Unity Package
@@ -45,6 +48,8 @@ public class GettingStarted : MonoBehaviour
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 6. Modify Your Script as Follows:
 
 ```C#
@@ -55,8 +60,7 @@ public class GettingStarted : MonoBehaviour
 {
     async void Start()
     {
-        // Define your project path
-        string projectPath = $"MyProject";
+        string projectPath = $"MyProject";  // Define your project path
 
         // Obtain a reference to the asset database
         IAssetDatabase m_assetDatabase = RuntimeAssetDatabase.Instance;
@@ -75,7 +79,6 @@ public class GettingStarted : MonoBehaviour
         var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         var filter = go.GetComponent<MeshFilter>();
         var renderer = go.GetComponent<Renderer>();
-
         var mesh = filter.mesh;
         var material = renderer.material;
         material.color = new Color32(0x0, 0x74, 0xFF, 0x0);
@@ -97,15 +100,14 @@ public class GettingStarted : MonoBehaviour
 
         // Instantiate the prefab. 
         await m_assetDatabase.InstantiateAssetAsync("Assets/Capsule.prefab");
-
-        // At this point, the capsule will be visible in the scene
     }
 }
-
 ```
 7. Press the "Play" button in Unity. **You should now see an instance of the object loaded from the Runtime Asset Database in your Unity scene**
 
 ![Getting Started Result][getting_started_result]
+
+<div style="page-break-after: always;"></div>
 
 ## Definitions
 ### Folder
@@ -157,6 +159,8 @@ Enumerators are classes used to retrieve Unity object dependencies in a structur
 They enable the serialization of an entire object tree in a way that ensures dependencies are deserialized before dependent objects during the deserialization process. 
 Similar to surrogates, enumerators are often auto-generated, but users also have the flexibility to create or edit them.
 
+<div style="page-break-after: always;"></div>
+
 ## Examples
 ### Load project
 ```C#
@@ -200,6 +204,8 @@ namespace Battlehub.Storage.Samples
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Unload project
 ```C#
 using UnityEngine;
@@ -236,24 +242,26 @@ namespace Battlehub.Storage.Samples
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Import external asset
 ```C#
 using UnityEngine;
 namespace Battlehub.Storage.Samples
 {
     /// <summary>
-    /// -----------------------------------------------------------------------------
+    /// ---------------------------------------------------------------------------
     /// First register an external asset loader. This should only be done once, 
     /// after that you can import multiple asses using this loader.
-    /// -----------------------------------------------------------------------------
+    /// ---------------------------------------------------------------------------
     /// In this example, I'm using the built-in ResourcesLoader for simplicity,
     /// but it could be any loader which implements the IExternalAssetLoader
     /// interface (AddressablesLoader, glTFLoader, FBXLoader, etc.)
-    /// -----------------------------------------------------------------------------
-    /// The resource loader in this example loads an asset from the Resources folder.
+    /// ---------------------------------------------------------------------------
+    /// The loader in this example loads an asset from the Resources folder.
     /// In this particular example, the asset with the key "Hellephant" is in
     /// Assets/Battlehub/Storage.Samples.ProjectBrowser/Content/Resources
-    /// -----------------------------------------------------------------------------
+    /// ---------------------------------------------------------------------------
     /// </summary>
     public class ImportExternalAssetExample : MonoBehaviour
     {
@@ -286,6 +294,8 @@ namespace Battlehub.Storage.Samples
 }
 ```
 ![Import External Asset Result][import_external_asset]
+
+<div style="page-break-after: always;"></div>
 
 ### Register external asset
 ```C#
@@ -354,6 +364,8 @@ namespace Battlehub.Storage.Samples
 ```
 ![Register External Asset Result][register_external_asset]
 
+<div style="page-break-after: always;"></div>
+
 ### Create asset
 
 ```C#
@@ -398,6 +410,7 @@ namespace Battlehub.Storage.Samples
     }
 }
 ```
+<div style="page-break-after: always;"></div>
 
 ### Create thumbnail
 
@@ -474,6 +487,7 @@ namespace Battlehub.Storage.Samples
     }
 }
 ```
+<div style="page-break-after: always;"></div>
 
 ### Load asset
 ```C#
@@ -522,13 +536,14 @@ namespace Battlehub.Storage.Samples
 
             var meshFilter = capsule.GetComponent<MeshFilter>();
             meshFilter.sharedMesh = meshFilter.mesh;
-            meshFilter.sharedMesh.vertices =
-                meshFilter.sharedMesh.vertices.Zip(meshFilter.sharedMesh.normals, (v,n) => (v, n)).
+            meshFilter.sharedMesh.vertices = meshFilter.sharedMesh.vertices.
+                Zip(meshFilter.sharedMesh.normals, (v,n) => (v, n)).
                 Select(vn => vn.v + vn.n).ToArray();
         }
     }
 }
 ```
+<div style="page-break-after: always;"></div>
 
 ### Instantiate asset
 ```C#
@@ -569,6 +584,8 @@ namespace Battlehub.Storage.Samples
 ```
 ![Instantiate Asset Result][instantiate_asset]
 
+<div style="page-break-after: always;"></div>
+
 ### Detach asset instance
 ```C#
 // Detaching an instance means breaking the links between the instance and the 
@@ -591,6 +608,8 @@ await UnloadAssetAsync(assetID, destroy: true);
 // Unloads all assets, optionally destroying attached instances (destroy: true)
 await UnloadAllAssetsAsync(destroy: true);
 ```
+
+<div style="page-break-after: always;"></div>
 
 ### Create asset variant
 ```C#
@@ -659,6 +678,8 @@ namespace Battlehub.Storage.Samples
 ```
 
 ![Create Asset Variant Result][create_asset_variant]
+
+<div style="page-break-after: always;"></div>
 
 ### Modify instance and apply changes
 ```C#
@@ -737,6 +758,8 @@ namespace Battlehub.Storage.Samples
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Modify instance and apply changes to base asset
 ```C#
 using UnityEngine;
@@ -798,6 +821,8 @@ namespace Battlehub.Storage.Samples
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### Revert changes to base
 ```C#
 using UnityEngine;
@@ -858,6 +883,9 @@ namespace Battlehub.Storage.Samples
     }
 }
 ```
+
+<div style="page-break-after: always;"></div>
+
 ## Surrogates
 Surrogates are intermediary classes used by the Serializer to facilitate the reading and writing of data to Unity objects during serialization. **To enable the serialization of a specific class, you must create a surrogate for it**. These surrogates can be generated automatically or created from scratch. To generate a Surrogate class, you can use the "Create Surrogates" window.
 
@@ -897,7 +925,6 @@ namespace Battlehub.Storage.Surrogates
     {   
         const int _PROPERTY_INDEX = 7;
         const int _TYPE_INDEX = 153;
-
         //_PLACEHOLDER_FOR_EXTENSIONS_DO_NOT_DELETE_OR_CHANGE_THIS_LINE_PLEASE
 
         [ProtoMember(2), Key(2)]
@@ -917,7 +944,6 @@ namespace Battlehub.Storage.Surrogates
 
         [ProtoMember(7), Key(7)]
         public global::System.Int32 IntValue { get; set; }
-
         //_PLACEHOLDER_FOR_NEW_PROPERTIES_DO_NOT_DELETE_OR_CHANGE_THIS_LINE_PLEASE
 
         public ValueTask Serialize(object obj, ISerializationContext<TID> ctx)
@@ -975,6 +1001,8 @@ Two constants, **int _PROPERTY_INDEX** and **int _TYPE_INDEX**, have following p
 **Please note that references to other types with surrogates are replaced with their identifier (TID). 
 You can use an "idmap" to generate unique IDs for objects and retrieve objects using their corresponding IDs.**
 
+<div style="page-break-after: always;"></div>
+
 ## Enumerators
 The enumerator is created along with the surrogate. Enumerators are specialized classes used to retrieve Unity object dependencies in a structured manner. These enumerators enable the serialization of an entire object tree, ensuring that dependencies are deserialized before dependent objects during the deserialization process.
 
@@ -1016,6 +1044,8 @@ namespace Battlehub.Storage.Enumerators
 ```
 
 **Note that the second parameter of the MoveNext method is the property index, which should be equal to the argument of the ProtoMember attribute assigned to that property in the surrogate class.**
+
+<div style="page-break-after: always;"></div>
 
 ## Build All
 After finishing creating or updating surrogates, make sure to click **"Tools" > "Runtime Asset Library" > "Build All"** from the main menu. This command will build the type model and serializer.
