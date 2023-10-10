@@ -5,6 +5,9 @@ The **Runtime Asset Database** is a library designed to simplify the implementat
 [![Promo Video][youtube_icon]](https://www.youtube.com/watch?v=DXWriLgrWdE)
 
 > **Note**  
+The repository containing the project used to create the above video can be found [here](https://github.com/Battlehub0x/RuntimeAssetDatabaseGameKit)
+
+> **Note**  
 You can find the online version of this document [here](https://github.com/Battlehub0x/RuntimeAssetDatabase)
 
 ## Introduction
@@ -294,6 +297,38 @@ namespace Battlehub.Storage.Samples
 }
 ```
 ![Import External Asset Result][import_external_asset]
+
+> **Note**  
+To use the AddressablesLoader, make sure to import the [Addressables package](https://docs.unity3d.com/Packages/com.unity.addressables@1.18/manual/index.html)
+
+> **Note**  
+You can also create your own external asset loader. To do this, create a new class and implement the IExternalAssetLoader interface:
+
+```C#
+using System;
+using System.Threading.Tasks;
+using UnityEngine;
+namespace Battlehub.Storage.Samples
+{
+    public class MyLoader : IExternalAssetLoader
+    {
+        public Task<object> LoadAsync(string key, object root, IProgress<float> progress)
+        {
+            return Task.FromResult<object>(new GameObject(key));
+        }
+
+        public void Release(object obj)
+        {
+            GameObject go = obj as GameObject;
+            if (go != null)
+            {
+                UnityEngine.Object.Destroy(go);
+            }
+        }
+    }
+}
+```
+
 
 <div style="page-break-after: always;"></div>
 
