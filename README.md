@@ -10,6 +10,9 @@ The repository containing the project used to create the above video can be foun
 > **Note**  
 You can find the online version of this document [here](https://github.com/Battlehub0x/RuntimeAssetDatabase)
 
+> **Code Companion**
+https://chat.openai.com/g/g-1UCDubUwr-your-code-companion-don-t-trust-me-blindly
+
 ## Introduction
 
 Unity developers often rely on the convenience and flexibility of the Editor's asset management system when designing their games. However, when it comes to implementing a save and load system at runtime, this process can become more complex. The Runtime Asset Database bridges this gap by bringing the essential asset management functionalities you're accustomed to into the runtime environment.
