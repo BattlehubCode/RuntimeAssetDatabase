@@ -7,11 +7,9 @@ The [**Runtime Asset Database**](https://assetstore.unity.com/packages/tools/mod
 > **Note**  
 The repository containing the project used to create the above video can be found [here](https://github.com/Battlehub0x/RuntimeAssetDatabaseGameKit)
 
-> **Note**  
-You can find the online version of this document [here](https://github.com/Battlehub0x/RuntimeAssetDatabase)
-
 > **Code Companion**
 https://chat.openai.com/g/g-1UCDubUwr-your-code-companion-don-t-trust-me-blindly
+
 
 ## Introduction
 
@@ -923,6 +921,24 @@ namespace Battlehub.Storage.Samples
 ```
 
 <div style="page-break-after: always;"></div>
+
+Here's a revised version of your README.md section:
+
+## Web Storage Sample
+
+You can use the runtime asset database in conjunction with an HTTP web server, mainly in WebGL builds.
+
+To start the web sample, follow these steps:
+
+1. Unpack the `Asset/Battlehub/Storage.Web` Unity package.
+2. Open the `Asset/Battlehub/Storage.Web/WebProjectBrowser` Unity scene.
+3. Extract `Asset/Battlehub.Extensions/Storage.Web/SampleHttpServer.zip` to a folder (e.g., `C:\SampleHttpWebServer`).
+4. Install Node.js from [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
+5. Open a terminal and navigate to `C:\SampleHttpWebServer`.
+6. Run the command `npm install`.
+7. Run the command `node app.js`.
+8. Enter play mode in Unity.
+
 
 ## Surrogates
 Surrogates are intermediary classes used by the Serializer to facilitate the reading and writing of data to Unity objects during serialization. **To enable the serialization of a specific class, you must create a surrogate for it**. These surrogates can be generated automatically or created from scratch. To generate a Surrogate class, you can use the "Create Surrogates" window.
