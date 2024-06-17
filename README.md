@@ -922,8 +922,6 @@ namespace Battlehub.Storage.Samples
 
 <div style="page-break-after: always;"></div>
 
-Here's a revised version of your README.md section:
-
 ## Web Storage Sample
 
 You can use the runtime asset database in conjunction with an HTTP web server, mainly in WebGL builds.
