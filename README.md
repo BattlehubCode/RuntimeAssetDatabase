@@ -930,14 +930,15 @@ You can use the runtime asset database in conjunction with an HTTP web server, m
 
 To start the web sample, follow these steps:
 
-1. Unpack the `Asset/Battlehub/Storage.Web` Unity package.
-2. Open the `Asset/Battlehub/Storage.Web/WebProjectBrowser` Unity scene.
-3. Extract `Asset/Battlehub.Extensions/Storage.Web/SampleHttpServer.zip` to a folder (e.g., `C:\SampleHttpWebServer`).
-4. Install Node.js from [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
-5. Open a terminal and navigate to `C:\SampleHttpWebServer`.
-6. Run the command `npm install`.
-7. Run the command `node app.js`.
-8. Enter play mode in Unity.
+1. Install the [Newtonsoft Json package]((https://docs.unity3d.com/Packages/com.unity.nuget.newtonsoft-json@3.2/manual/index.html)). In Package Manager, click on "+ Add package by name" and enter "com.unity.nuget.newtonsoft-json"
+2. Unpack the `Asset/Battlehub/Storage.Web` Unity package.
+3. Open the `Asset/Battlehub/Storage.Web/WebProjectBrowser` Unity scene.
+4. Extract `Asset/Battlehub.Extensions/Storage.Web/SampleHttpServer.zip` to a folder (e.g., `C:\SampleHttpWebServer`).
+5. Install Node.js from [Node.js](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs).
+6. Open a terminal and navigate to `C:\SampleHttpWebServer`.
+7. Run the command `npm install`.
+8. Run the command `node app.js`.
+9. Enter play mode in Unity.
 
 
 ## Surrogates
