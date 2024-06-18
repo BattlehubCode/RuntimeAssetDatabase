@@ -924,7 +924,7 @@ namespace Battlehub.Storage.Samples
 
 ## Web Storage Sample
 
-You can use the runtime asset database in conjunction with an HTTP web server, mainly in WebGL builds.
+You can use the runtime asset database in conjunction with an HTTP web server, in WebGL and Standalone builds.
 
 To start the web sample, follow these steps:
 
