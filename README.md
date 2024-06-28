@@ -1098,6 +1098,23 @@ namespace Battlehub.Storage.Enumerators
 
 **Note that the second parameter of the MoveNext method is the property index, which should be equal to the argument of the ProtoMember attribute assigned to that property in the surrogate class.**
 
+You can also use the following simplified syntax when editing an enumerator:
+```C#
+namespace Battlehub.Storage.Enumerators
+{
+    [ObjectEnumerator(typeof(global::MyComponent))]
+    public class MyComponentEnumerator : ObjectEnumerator<global::MyComponent>
+    {
+       protected override IEnumerator<(object Object, int Key)> GetNext()
+       {
+           yield return (TypedObject.Material, 5);
+           yield return (TypedObject.Target, 6);
+           yield return (TypedObject, -1);
+       }
+    }
+}
+```
+
 <div style="page-break-after: always;"></div>
 
 ## Build All
