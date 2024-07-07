@@ -1117,6 +1117,47 @@ namespace Battlehub.Storage.Enumerators
 
 <div style="page-break-after: always;"></div>
 
+## Dynamic Surrogates (Preview)
+
+It is possible to avoid creating surrogates by hand instead letting runtime asset database to serialize type using reflection at runtime.
+It is roughly equivalent to unity serialization rules. It works with fields and not with properties.
+
+To use field serialization you must ensure that the field:
+
+    Is public, or has a SerializeField attribute
+    isn’t static
+    isn’t const
+    isn’t readonly
+    Has a field type that can be serialized:
+        Primitive data types (int, float, double, bool, string, etc.)
+        Enum types (32 bits or smaller)
+        Fixed-size buffers
+        Unity built-in types, for example, Vector2, Vector3, Rect, Matrix4x4, Color. *Some types line AnimationCurve will not be serialized*
+        Custom structs with the Serializable attribute
+        References to objects that derive from UnityEngine.Object
+        Custom classes with the Serializable attribute. (See Serialization of custom classes).
+        An array of a field type mentioned above
+        A List<T> of a field type mentioned above
+
+### Serialization of custom classes
+
+For Unity to serialize a custom class, you must ensure the class:
+
+    Has the Serializable attribute
+    isn’t static.
+
+[SerializeReference] attribute is not supported and serialization is inline
+
+### Custom serialization
+
+Sometimes you might want to serialize something that Unity’s serializer doesn’t support (for example, a C# Dictionary). The best approach is to implement the ISerializationCallbackReceiver interface in your class. This allows you to implement callbacks that are invoked at key points during serialization and deserialization:
+
+    When an object is about to be serialized, Unity invokes the OnBeforeSerialize() callback. Inside this callback is where you can transform your data into something Unity understands. For example, to serialize a C# Dictionary, copy the data from the Dictionary into an array of keys and an array of values.
+    After the OnBeforeSerialize() callback is complete, Unity serializes the arrays.
+    Later, when the object is deserialized, Unity invokes the OnAfterDeserialize() callback. Inside this callback is where you can transform the data back into a form that’s convenient for the object in memory. For example, use the key and value arrays to repopulate the C# Dictionary.
+
+
+
 ## Build All
 After finishing creating or updating surrogates, make sure to click **"Tools" > "Runtime Asset Library" > "Build All"** from the main menu. This command will build the type model and serializer.
 
