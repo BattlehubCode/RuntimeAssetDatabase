@@ -1125,7 +1125,7 @@ To enable Dynamic Surrogate for a type, use the following code:
 
 ```csharp
 var assetDatabase = RuntimeAssetDatabase.Instance;
-assetDatabase.RegisterDynamicType(typeof(MyMonoBehaviour));
+assetDatabase.RegisterDynamicTypes(typeof(MyMonoBehaviour));
 ```
 
 To use field serialization, ensure that the field:
@@ -1158,9 +1158,9 @@ The `[SerializeReference]` attribute is not supported and serialization is inlin
 
 Sometimes you might want to serialize something that the serializer doesn’t support (for example, a C# Dictionary). The best approach is to implement the `ISerializationCallbackReceiver` interface in your class. This allows you to implement callbacks that are invoked at key points during serialization and deserialization:
 
-- When an object is about to be serialized, Unity invokes the `OnBeforeSerialize()` callback. Inside this callback is where you can transform your data into something Unity understands. For example, to serialize a C# Dictionary, copy the data from the Dictionary into an array of keys and an array of values.
+- When an object is about to be serialized, Runtime Asset Database invokes the `OnBeforeSerialize()` callback. Inside this callback is where you can transform your data into something Runtime Asset Database understands. For example, to serialize a C# Dictionary, copy the data from the Dictionary into an array of keys and an array of values.
 - After the `OnBeforeSerialize()` callback is complete, Unity serializes the arrays.
-- Later, when the object is deserialized, Unity invokes the `OnAfterDeserialize()` callback. Inside this callback is where you can transform the data back into a form that’s convenient for the object in memory. For example, use the key and value arrays to repopulate the C# Dictionary.
+- Later, when the object is deserialized, Runtime Asset Database invokes the `OnAfterDeserialize()` callback. Inside this callback is where you can transform the data back into a form that’s convenient for the object in memory. For example, use the key and value arrays to repopulate the C# Dictionary.
 
 
 ## Build All
